@@ -7,6 +7,9 @@ using SistemaAcademico.Modelos;
 
 namespace SistemaAcademico.Controles
 {
+    /// <summary>
+    /// Inicializa o projeto
+    /// </summary>
     public class Inicializa
     {
         private Dictionary<int, Aluno> Alunos;
@@ -58,7 +61,6 @@ namespace SistemaAcademico.Controles
                     break;
                 case 4:
                     break;
-
             }
         }
 
