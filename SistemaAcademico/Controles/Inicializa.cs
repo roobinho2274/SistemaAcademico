@@ -30,7 +30,7 @@ namespace SistemaAcademico.Controles
                     "\t\t\t2 - Exibir todos alunos\n" +
                     "\t\t\t3 - Apaga aluno\n" +
                     "\t\t\t4 - Exibir aluno\n" +
-                    "\t\t\t5 - Cadastra nota de aluno\\n\"" +
+                    "\t\t\t5 - Cadastra nota de aluno\n" +
                     "\t\t\t0 - Sair\n");
                 op = Convert.ToInt16(Console.ReadLine());
 
@@ -55,12 +55,44 @@ namespace SistemaAcademico.Controles
                     Console.WriteLine("Pressione qualquer tecla para continuar......");
                     Console.ReadLine();
                     break;
+
                 case 3:
-                    ///Implementar função para apagar uma aluno passando o numero de matricula
+                    Console.Write("Digite o número de matrícula do aluno que você deseja remover: ");
+                    int matriculaRemover = Convert.ToInt32(Console.ReadLine());
+
+                    bool removido = ControleAluno.RemoverAluno(matriculaRemover, Alunos);
+
+                    if (removido)
+                        Console.WriteLine("Aluno removido com sucesso! :)");
+                    else
+                        Console.WriteLine("Aluno não encontrado! :(");
+
+                    Console.WriteLine("Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
                     break;
+
                 case 4:
-                    ///Implementar função para exibir um aluno passando o numero de matricula
+                    Console.Write("Digite a matrícula do aluno que você deseja buscar: ");
+                    int matriculaExibir = Convert.ToInt32(Console.ReadLine());
+
+                    Aluno alunoEncontrado = ControleAluno.BuscarAluno(matriculaExibir, Alunos);
+
+                    if (alunoEncontrado != null)
+                    {
+                        Console.WriteLine("Aluno encontrado! :)");
+                        ControleAluno.ImprimeDados(alunoEncontrado);
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Aluno não encontrado! :(");
+                    }
+                       
+
+                    Console.WriteLine("Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
                     break;
+
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using SistemaAcademico.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SistemaAcademico.Controles
@@ -14,7 +15,10 @@ namespace SistemaAcademico.Controles
             aluno.Nome = Console.ReadLine();
             Console.WriteLine("Matricula: ");
             aluno.Matricula = Convert.ToInt32(Console.ReadLine());
-
+            for (int i = 0; i <4; i++)
+            {
+                LancarNotas(new Random().Next(0, 10), aluno);
+            }
             return aluno;
         }
         public void ImprimeDados(Aluno aluno)
@@ -51,5 +55,25 @@ namespace SistemaAcademico.Controles
 
             aluno.Media = soma / qtdNotas;
         }
+
+        public bool RemoverAluno(int matricula, Dictionary<int, Aluno> listaAlunos)
+        {
+            if (listaAlunos.ContainsKey(matricula))
+            {
+                listaAlunos.Remove(matricula);
+                return true;
+            }
+            return false;
+        }
+
+        public Aluno BuscarAluno(int matricula, Dictionary<int, Aluno> alunos)
+        {
+            if (alunos.TryGetValue(matricula, out Aluno alunoEncontrado)) 
+            {
+                return alunoEncontrado;
+            }
+            return null;
+        }
+
     }
 }
