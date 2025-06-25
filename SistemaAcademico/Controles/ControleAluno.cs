@@ -1,4 +1,5 @@
 ﻿using SistemaAcademico.Modelos;
+
 using System;
 using System.Linq;
 
@@ -14,6 +15,10 @@ namespace SistemaAcademico.Controles
             aluno.Nome = Console.ReadLine();
             Console.WriteLine("Matricula: ");
             aluno.Matricula = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < 4; i++)
+            {
+               LancarNotas(new Random().Next(0, 10), aluno);
+            }
 
             return aluno;
         }
