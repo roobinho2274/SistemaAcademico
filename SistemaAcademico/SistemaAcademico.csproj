@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controles\ControleAluno.cs" />
     <Compile Include="Controles\Inicializa.cs" />
     <Compile Include="Modelos\Aluno.cs" />
     <Compile Include="Program.cs" />

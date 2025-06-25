@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 
 using SistemaAcademico.Modelos;
 
@@ -12,6 +10,7 @@ namespace SistemaAcademico.Controles
     /// </summary>
     public class Inicializa
     {
+        ControleAluno ControleAluno = new ControleAluno();
         private Dictionary<int, Aluno> Alunos;
         private int op;
         public Inicializa()
@@ -45,29 +44,24 @@ namespace SistemaAcademico.Controles
             switch (op)
             {
                 case 1:
-                    var alunoC = CadastraAluno();
-                    Alunos.Add(alunoC.matricula, alunoC);
+                    var alunoC = ControleAluno.CadastraAluno();
+                    Alunos.Add(alunoC.Matricula, alunoC);
                     break;
                 case 2:
-                    /// [int, aluno]
                     foreach (var aluno in Alunos)
                     {
-                        aluno.Value.ImprimeDados();
+                        ControleAluno.ImprimeDados(aluno.Value);
                     }
                     Console.WriteLine("Pressione qualquer tecla para continuar......");
                     Console.ReadLine();
                     break;
                 case 3:
+                    ///Implementar função para apagar uma aluno passando o numero de matricula
                     break;
                 case 4:
+                    ///Implementar função para exibir um aluno passando o numero de matricula
                     break;
             }
-        }
-
-        private Aluno CadastraAluno()
-        {
-            // Criar uma instancia de aluno com os dados informados pelo usuário
-            return null;//Vai retornar o aluno
         }
     }
 }

@@ -9,7 +9,6 @@ namespace SistemaAcademico
             Inicializa ini = new Inicializa();
 
             ini.Menu();
-
         }
     }
 }
