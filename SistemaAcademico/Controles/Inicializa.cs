@@ -56,10 +56,17 @@ namespace SistemaAcademico.Controles
                     Console.ReadLine();
                     break;
                 case 3:
-                    ///Implementar função para apagar uma aluno passando o numero de matricula
+                    ///Implementar função imprimir.
+                    Console.Write("Digite a matrícula do aluno: ");
+                    int matriculaBusca = Convert.ToInt32(Console.ReadLine());
+                    ControleAluno.ImprimirAlunoPorMatricula(matriculaBusca);
                     break;
                 case 4:
-                    ///Implementar função para exibir um aluno passando o numero de matricula
+                    ///Implementar apagar aluno.
+                    Console.Write("Digite a matrícula do aluno que deseja apagar: ");
+                    int matriculaApagar = Convert.ToInt32(Console.ReadLine());
+                    ControleAluno.ApagarAluno(matriculaApagar);
+                    break;
                     break;
             }
         }
