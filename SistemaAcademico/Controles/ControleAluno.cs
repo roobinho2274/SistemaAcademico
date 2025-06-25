@@ -14,6 +14,10 @@ namespace SistemaAcademico.Controles
             aluno.Nome = Console.ReadLine();
             Console.WriteLine("Matricula: ");
             aluno.Matricula = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0;i<4 ;i++)
+            {
+                LancarNotas(new Random().Next(0, 10), aluno);
+            }
 
             return aluno;
         }
@@ -50,6 +54,10 @@ namespace SistemaAcademico.Controles
             var soma = aluno.Notas.Sum();
 
             aluno.Media = soma / qtdNotas;
+        }
+        public void ApagarAluno()
+        {
+            Console.WriteLine($"Qual aluno deseja apagar ?");
         }
     }
 }

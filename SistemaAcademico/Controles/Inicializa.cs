@@ -30,7 +30,7 @@ namespace SistemaAcademico.Controles
                     "\t\t\t2 - Exibir todos alunos\n" +
                     "\t\t\t3 - Apaga aluno\n" +
                     "\t\t\t4 - Exibir aluno\n" +
-                    "\t\t\t5 - Cadastra nota de aluno\\n\"" +
+                    "\t\t\t5 - Cadastra nota de aluno\n\"" +
                     "\t\t\t0 - Sair\n");
                 op = Convert.ToInt16(Console.ReadLine());
 
@@ -48,18 +48,94 @@ namespace SistemaAcademico.Controles
                     Alunos.Add(alunoC.Matricula, alunoC);
                     break;
                 case 2:
-                    foreach (var aluno in Alunos)
+                    
+                    Console.Clear();
+                    if (Alunos.Count == 0)
                     {
-                        ControleAluno.ImprimeDados(aluno.Value);
+                        Console.WriteLine("Nenhum aluno cadastrado.");
                     }
-                    Console.WriteLine("Pressione qualquer tecla para continuar......");
-                    Console.ReadLine();
+                    else
+                    {
+                        foreach (var aluno in Alunos.Values)
+                        {
+                            ControleAluno.ImprimeDados(aluno);
+                        }
+                    }
+                    Console.WriteLine("Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
                     break;
+
                 case 3:
-                    ///Implementar função para apagar uma aluno passando o numero de matricula
+                    
+                    Console.Clear();
+                    if (Alunos.Count == 0)
+                    {
+                        Console.WriteLine("Nenhum aluno para apagar.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Alunos cadastrados:");
+                        foreach (var aluno in Alunos)
+                        {
+                            Console.WriteLine($"Matrícula: {aluno.Key}, Nome: {aluno.Value.Nome}");
+                        }
+
+                        Console.Write("\nDigite a matrícula do aluno que deseja apagar: ");
+                        if (int.TryParse(Console.ReadLine(), out int matriculaApagar))
+                        {
+                            if (Alunos.ContainsKey(matriculaApagar))
+                            {
+                                Alunos.Remove(matriculaApagar);
+                                Console.WriteLine("Aluno removido com sucesso.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Matrícula não encontrada.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Entrada inválida.");
+                        }
+                    }
+                    Console.WriteLine("Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
                     break;
+
                 case 4:
-                    ///Implementar função para exibir um aluno passando o numero de matricula
+                    
+                    Console.Clear();
+                    if (Alunos.Count == 0)
+                    {
+                        Console.WriteLine("Nenhum aluno cadastrado.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Alunos cadastrados:");
+                        foreach (var aluno in Alunos)
+                        {
+                            Console.WriteLine($"Matrícula: {aluno.Key}, Nome: {aluno.Value.Nome}");
+                        }
+
+                        Console.Write("\nDigite a matrícula do aluno que deseja visualizar: ");
+                        if (int.TryParse(Console.ReadLine(), out int matriculaBusca))
+                        {
+                            if (Alunos.ContainsKey(matriculaBusca))
+                            {
+                                ControleAluno.ImprimeDados(Alunos[matriculaBusca]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Matrícula não encontrada.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Entrada inválida.");
+                        }
+                    }
+                    Console.WriteLine("Pressione qualquer tecla para continuar...");
+                    Console.ReadKey();
                     break;
             }
         }
