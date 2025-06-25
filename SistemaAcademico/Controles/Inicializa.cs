@@ -56,7 +56,7 @@ namespace SistemaAcademico.Controles
                     Console.ReadLine();
                     break;
                 case 3:
-                    ///Implementar função imprimir.
+                    ///Implementar função imprimir ImprimirAlunoPorMatricula.
                     Console.Write("Digite a matrícula do aluno: ");
                     int matriculaBusca = Convert.ToInt32(Console.ReadLine());
                     ControleAluno.ImprimirAlunoPorMatricula(matriculaBusca);
